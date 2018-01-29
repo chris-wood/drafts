@@ -69,8 +69,10 @@ Table of Contents
      4.3.  SCTP  . . . . . . . . . . . . . . . . . . . . . . . . . .   2
      4.4.  QUIC  . . . . . . . . . . . . . . . . . . . . . . . . . .   2
      4.5.  HTTP over TLS as a pseudotransport  . . . . . . . . . . .   2
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   2
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   2
+   5.  Rendezvous and Environment Discovery  . . . . . . . . . . . .   2
+     5.1.  ICE and STUN  . . . . . . . . . . . . . . . . . . . . . .   2
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   2
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   3
 
 1.  Introduction
@@ -94,17 +96,15 @@ Table of Contents
 
 4.5.  HTTP over TLS as a pseudotransport
 
-5.  IANA Considerations
+5.  Rendezvous and Environment Discovery
+
+5.1.  ICE and STUN
+
+6.  IANA Considerations
 
    RFC-EDITOR: Please remove this section before publication.
 
    This document has no actions for IANA.
-
-6.  Security Considerations
-
-   explicitly point out that implementations need to be careful about
-   downgrade.
-
 
 
 
@@ -113,6 +113,11 @@ Trammell                 Expires August 2, 2018                 [Page 2]
 
 Internet-Draft             TAPS Implementation              January 2018
 
+
+7.  Security Considerations
+
+   explicitly point out that implementations need to be careful about
+   downgrade.
 
 Author's Address
 
@@ -123,11 +128,6 @@ Author's Address
    Switzerland
 
    Email: ietf@trammell.ch
-
-
-
-
-
 
 
 
