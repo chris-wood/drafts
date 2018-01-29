@@ -102,8 +102,8 @@ Table of Contents
 
 6.  Security Considerations
 
-   be paranoid
-
+   explicitly point out that implementations need to be careful about
+   downgrade.
 
 
 

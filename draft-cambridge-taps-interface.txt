@@ -70,11 +70,16 @@ Table of Contents
    8.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   2
    9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   2
    10. Security Considerations . . . . . . . . . . . . . . . . . . .   2
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   3
 
 1.  Introduction
 
+   why does this document exist...
+
 2.  Design Principles
+
+   take some first principles (beyond those in the architecture) from
+   post sockets. asynchronicity and message orientation are key here.
 
 3.  Pre-Establishment
 
@@ -98,11 +103,6 @@ Table of Contents
 
    be paranoid
 
-Author's Address
-
-
-
-
 
 
 
@@ -114,6 +114,8 @@ Trammell                 Expires August 2, 2018                 [Page 2]
 Internet-Draft               TAPS Interface                 January 2018
 
 
+Author's Address
+
    Brian Trammell (editor)
    ETH Zurich
    Gloriastrasse 35
@@ -121,8 +123,6 @@ Internet-Draft               TAPS Interface                 January 2018
    Switzerland
 
    Email: ietf@trammell.ch
-
-
 
 
 

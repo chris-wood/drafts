@@ -85,7 +85,7 @@ Table of Contents
 
 1.  Introduction
 
-   why does this document exist
+   why does this document exist...
 
 2.  Terminology
 
