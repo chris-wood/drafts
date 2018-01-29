@@ -1,0 +1,168 @@
+
+
+
+
+TAPS Working Group                                      B. Trammell, Ed.
+Internet-Draft                                                ETH Zurich
+Intended status: Informational                          January 29, 2018
+Expires: August 2, 2018
+
+
+             Implementing Interfaces to Transport Services
+                    draft-cambridge-taps-impl-latest
+
+Abstract
+
+   this will be the TAPS API Implementation Considerations document
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on August 2, 2018.
+
+Copyright Notice
+
+   Copyright (c) 2018 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (https://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+
+
+
+
+
+
+Trammell                 Expires August 2, 2018                 [Page 1]
+
+Internet-Draft             TAPS Implementation              January 2018
+
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Implementing Pre-Establishment  . . . . . . . . . . . . . . .   2
+   3.  General Considerations for Racing During Establishment  . . .   2
+   4.  Specific Transport Protocol Considerations  . . . . . . . . .   2
+     4.1.  TCP . . . . . . . . . . . . . . . . . . . . . . . . . . .   2
+     4.2.  UDP . . . . . . . . . . . . . . . . . . . . . . . . . . .   2
+     4.3.  SCTP  . . . . . . . . . . . . . . . . . . . . . . . . . .   2
+     4.4.  QUIC  . . . . . . . . . . . . . . . . . . . . . . . . . .   2
+     4.5.  HTTP over TLS as a pseudotransport  . . . . . . . . . . .   2
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   2
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   2
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   3
+
+1.  Introduction
+
+   note that these are basically just brian's idea here; further
+   structure to be determined on monday afternoon.
+
+2.  Implementing Pre-Establishment
+
+3.  General Considerations for Racing During Establishment
+
+4.  Specific Transport Protocol Considerations
+
+4.1.  TCP
+
+4.2.  UDP
+
+4.3.  SCTP
+
+4.4.  QUIC
+
+4.5.  HTTP over TLS as a pseudotransport
+
+5.  IANA Considerations
+
+   RFC-EDITOR: Please remove this section before publication.
+
+   This document has no actions for IANA.
+
+6.  Security Considerations
+
+   be paranoid
+
+
+
+
+
+
+Trammell                 Expires August 2, 2018                 [Page 2]
+
+Internet-Draft             TAPS Implementation              January 2018
+
+
+Author's Address
+
+   Brian Trammell (editor)
+   ETH Zurich
+   Gloriastrasse 35
+   8092 Zurich
+   Switzerland
+
+   Email: ietf@trammell.ch
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Trammell                 Expires August 2, 2018                 [Page 3]
