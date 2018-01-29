@@ -8,7 +8,7 @@ Intended status: Informational                          January 29, 2018
 Expires: August 2, 2018
 
 
-          An Architecture for Interfaces to Transport services
+          An Architecture for Interfaces to Transport Services
                     draft-cambridge-taps-arch-latest
 
 Abstract
@@ -64,23 +64,15 @@ Table of Contents
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   2
    3.  Design Principles . . . . . . . . . . . . . . . . . . . . . .   2
    4.  Interface Architecture and Terminology  . . . . . . . . . . .   2
-     4.1.  Pre-Establishment . . . . . . . . . . . . . . . . . . . .   3
-       4.1.1.  Objects . . . . . . . . . . . . . . . . . . . . . . .   3
-       4.1.2.  Actions . . . . . . . . . . . . . . . . . . . . . . .   3
-     4.2.  Establishment . . . . . . . . . . . . . . . . . . . . . .   3
-       4.2.1.  Objects . . . . . . . . . . . . . . . . . . . . . . .   3
-       4.2.2.  Actions . . . . . . . . . . . . . . . . . . . . . . .   3
-     4.3.  Data Transfer . . . . . . . . . . . . . . . . . . . . . .   3
-       4.3.1.  Objects . . . . . . . . . . . . . . . . . . . . . . .   3
-       4.3.2.  Actions . . . . . . . . . . . . . . . . . . . . . . .   3
-     4.4.  Event Handling  . . . . . . . . . . . . . . . . . . . . .   3
-       4.4.1.  Objects . . . . . . . . . . . . . . . . . . . . . . .   3
-       4.4.2.  Actions . . . . . . . . . . . . . . . . . . . . . . .   3
-     4.5.  Termination . . . . . . . . . . . . . . . . . . . . . . .   3
-       4.5.1.  Objects . . . . . . . . . . . . . . . . . . . . . . .   3
-       4.5.2.  Actions . . . . . . . . . . . . . . . . . . . . . . .   3
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   3
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
+     4.1.  Objects . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     4.2.  Pre-Establishment . . . . . . . . . . . . . . . . . . . .   4
+     4.3.  Establishment . . . . . . . . . . . . . . . . . . . . . .   4
+     4.4.  Data Transfer . . . . . . . . . . . . . . . . . . . . . .   4
+     4.5.  Event Handling  . . . . . . . . . . . . . . . . . . . . .   4
+     4.6.  Termination . . . . . . . . . . . . . . . . . . . . . . .   4
+     4.7.  Internal Terminology  . . . . . . . . . . . . . . . . . .   4
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   4
 
 1.  Introduction
@@ -97,15 +89,23 @@ Table of Contents
 
 4.  Interface Architecture and Terminology
 
-   draw a picture
+   introduce architecture overview diagram
 
-   list of phases
 
-   1.  Pre-Establishment
 
-   2.  Establishment
 
-   3.  Data Transfer
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -114,39 +114,79 @@ Trammell                 Expires August 2, 2018                 [Page 2]
 Internet-Draft              TAPS Architecture               January 2018
 
 
+     +------------------------------------------------------+
+     |                    Application                       |
+     +-|----------------+-----^------+----------^-----------+
+       |                |     |      |          |
+     pre-             send    |      |       events
+     establishment      |  receive   v          |
+       |                |     ^    terminate    |
+       |                |     |      +          |
+       |             +--v-----+------v--+       |
+     +-v-------------+    Connection    +-------+----------+
+     |  Transport    +--------+---------+                  |
+     |  Services              |                            |
+     |  API                   |                            |
+     +------------------------|----------------------------+
+                              |
+     +------------------------|----------------------------+
+     |  Transport             |                            |
+     |  System                |        +-----------------+ |
+     |                        |        | Path  / TS State| |
+     |  (Path Info Gathering) |        | Cache / Cache   | |
+     |                        |        +-----------------+ |
+     |  (Connection Racing)   |                            |
+     |                        |        +-----------------+ |
+     |                        |        | System / User   | |
+     |                        |        | Policy / Config | |
+     |             +----------v-----+  +-----------------+ |
+     |             |    Protocol    |                      |
+     +-------------+     Stack      +----------------------+
+                   |    Instance    |
+                   +-------+--------+
+                           V
+                 Network Layer Interface
+
+      Figure 1: Concepts and Relationships in the Transport Services
+                          Interface Architecture
+
+   introduce, list phases
+
+   1.  Pre-Establishment
+
+   2.  Establishment
+
+   3.  Data Transfer
+
    4.  Event Handling
 
    5.  Termination
 
-4.1.  Pre-Establishment
 
-4.1.1.  Objects
 
-4.1.2.  Actions
 
-4.2.  Establishment
+Trammell                 Expires August 2, 2018                 [Page 3]
+
+Internet-Draft              TAPS Architecture               January 2018
 
-4.2.1.  Objects
 
-4.2.2.  Actions
+4.1.  Objects
 
-4.3.  Data Transfer
+   draw a picture
 
-4.3.1.  Objects
+4.2.  Pre-Establishment
 
-4.3.2.  Actions
+4.3.  Establishment
 
-4.4.  Event Handling
+4.4.  Data Transfer
 
-4.4.1.  Objects
+4.5.  Event Handling
 
-4.4.2.  Actions
+4.6.  Termination
 
-4.5.  Termination
+4.7.  Internal Terminology
 
-4.5.1.  Objects
-
-4.5.2.  Actions
+   ...things you probably need to implement this, but is not
 
 5.  IANA Considerations
 
@@ -158,18 +198,6 @@ Internet-Draft              TAPS Architecture               January 2018
 
    be paranoid
 
-
-
-
-
-
-
-
-Trammell                 Expires August 2, 2018                 [Page 3]
-
-Internet-Draft              TAPS Architecture               January 2018
-
-
 Author's Address
 
    Brian Trammell (editor)
@@ -179,34 +207,6 @@ Author's Address
    Switzerland
 
    Email: ietf@trammell.ch
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -5,7 +5,7 @@
 <head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
 
-  <title>An Architecture for Interfaces to Transport services</title>
+  <title>An Architecture for Interfaces to Transport Services</title>
 
   
 <style type="text/css">/*<![CDATA[*/
@@ -286,21 +286,13 @@ address {
 <link href="#rfc.section.2" rel="Chapter" title="2 Terminology">
 <link href="#rfc.section.3" rel="Chapter" title="3 Design Principles">
 <link href="#rfc.section.4" rel="Chapter" title="4 Interface Architecture and Terminology">
-<link href="#rfc.section.4.1" rel="Chapter" title="4.1 Pre-Establishment">
-<link href="#rfc.section.4.1.1" rel="Chapter" title="4.1.1 Objects">
-<link href="#rfc.section.4.1.2" rel="Chapter" title="4.1.2 Actions">
-<link href="#rfc.section.4.2" rel="Chapter" title="4.2 Establishment">
-<link href="#rfc.section.4.2.1" rel="Chapter" title="4.2.1 Objects">
-<link href="#rfc.section.4.2.2" rel="Chapter" title="4.2.2 Actions">
-<link href="#rfc.section.4.3" rel="Chapter" title="4.3 Data Transfer">
-<link href="#rfc.section.4.3.1" rel="Chapter" title="4.3.1 Objects">
-<link href="#rfc.section.4.3.2" rel="Chapter" title="4.3.2 Actions">
-<link href="#rfc.section.4.4" rel="Chapter" title="4.4 Event Handling">
-<link href="#rfc.section.4.4.1" rel="Chapter" title="4.4.1 Objects">
-<link href="#rfc.section.4.4.2" rel="Chapter" title="4.4.2 Actions">
-<link href="#rfc.section.4.5" rel="Chapter" title="4.5 Termination">
-<link href="#rfc.section.4.5.1" rel="Chapter" title="4.5.1 Objects">
-<link href="#rfc.section.4.5.2" rel="Chapter" title="4.5.2 Actions">
+<link href="#rfc.section.4.1" rel="Chapter" title="4.1 Objects">
+<link href="#rfc.section.4.2" rel="Chapter" title="4.2 Pre-Establishment">
+<link href="#rfc.section.4.3" rel="Chapter" title="4.3 Establishment">
+<link href="#rfc.section.4.4" rel="Chapter" title="4.4 Data Transfer">
+<link href="#rfc.section.4.5" rel="Chapter" title="4.5 Event Handling">
+<link href="#rfc.section.4.6" rel="Chapter" title="4.6 Termination">
+<link href="#rfc.section.4.7" rel="Chapter" title="4.7 Internal Terminology">
 <link href="#rfc.section.5" rel="Chapter" title="5 IANA Considerations">
 <link href="#rfc.section.6" rel="Chapter" title="6 Security Considerations">
 <link href="#rfc.authors" rel="Chapter">
@@ -343,7 +335,7 @@ address {
     </tbody>
   </table>
 
-  <p class="title">An Architecture for Interfaces to Transport services<br />
+  <p class="title">An Architecture for Interfaces to Transport Services<br />
   <span class="filename">draft-cambridge-taps-arch-latest</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
@@ -370,37 +362,21 @@ address {
 </li>
 <li>4.   <a href="#rfc.section.4">Interface Architecture and Terminology</a>
 </li>
-<ul><li>4.1.   <a href="#rfc.section.4.1">Pre-Establishment</a>
+<ul><li>4.1.   <a href="#rfc.section.4.1">Objects</a>
 </li>
-<ul><li>4.1.1.   <a href="#rfc.section.4.1.1">Objects</a>
+<li>4.2.   <a href="#rfc.section.4.2">Pre-Establishment</a>
 </li>
-<li>4.1.2.   <a href="#rfc.section.4.1.2">Actions</a>
+<li>4.3.   <a href="#rfc.section.4.3">Establishment</a>
 </li>
-</ul><li>4.2.   <a href="#rfc.section.4.2">Establishment</a>
+<li>4.4.   <a href="#rfc.section.4.4">Data Transfer</a>
 </li>
-<ul><li>4.2.1.   <a href="#rfc.section.4.2.1">Objects</a>
+<li>4.5.   <a href="#rfc.section.4.5">Event Handling</a>
 </li>
-<li>4.2.2.   <a href="#rfc.section.4.2.2">Actions</a>
+<li>4.6.   <a href="#rfc.section.4.6">Termination</a>
 </li>
-</ul><li>4.3.   <a href="#rfc.section.4.3">Data Transfer</a>
+<li>4.7.   <a href="#rfc.section.4.7">Internal Terminology</a>
 </li>
-<ul><li>4.3.1.   <a href="#rfc.section.4.3.1">Objects</a>
-</li>
-<li>4.3.2.   <a href="#rfc.section.4.3.2">Actions</a>
-</li>
-</ul><li>4.4.   <a href="#rfc.section.4.4">Event Handling</a>
-</li>
-<ul><li>4.4.1.   <a href="#rfc.section.4.4.1">Objects</a>
-</li>
-<li>4.4.2.   <a href="#rfc.section.4.4.2">Actions</a>
-</li>
-</ul><li>4.5.   <a href="#rfc.section.4.5">Termination</a>
-</li>
-<ul><li>4.5.1.   <a href="#rfc.section.4.5.1">Objects</a>
-</li>
-<li>4.5.2.   <a href="#rfc.section.4.5.2">Actions</a>
-</li>
-</ul></ul><li>5.   <a href="#rfc.section.5">IANA Considerations</a>
+</ul><li>5.   <a href="#rfc.section.5">IANA Considerations</a>
 </li>
 <li>6.   <a href="#rfc.section.6">Security Considerations</a>
 </li>
@@ -425,8 +401,45 @@ address {
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#interface-architecture-and-terminology" id="interface-architecture-and-terminology">Interface Architecture and Terminology</a>
 </h1>
-<p id="rfc.section.4.p.1">draw a picture</p>
-<p id="rfc.section.4.p.2">list of phases</p>
+<p id="rfc.section.4.p.1">introduce architecture overview diagram</p>
+<div id="rfc.figure.1"></div>
+<div id="fig-abstractions"></div>
+<pre>
+  +------------------------------------------------------+
+  |                    Application                       |
+  +-|----------------+-----^------+----------^-----------+
+    |                |     |      |          |
+  pre-             send    |      |       events
+  establishment      |  receive   v          |
+    |                |     ^    terminate    |
+    |                |     |      +          |
+    |             +--v-----+------v--+       |
+  +-v-------------+    Connection    +-------+----------+
+  |  Transport    +--------+---------+                  |
+  |  Services              |                            |
+  |  API                   |                            |
+  +------------------------|----------------------------+
+                           |
+  +------------------------|----------------------------+
+  |  Transport             |                            |
+  |  System                |        +-----------------+ |
+  |                        |        | Path  / TS State| |
+  |  (Path Info Gathering) |        | Cache / Cache   | |
+  |                        |        +-----------------+ |
+  |  (Connection Racing)   |                            |
+  |                        |        +-----------------+ |
+  |                        |        | System / User   | |
+  |                        |        | Policy / Config | |
+  |             +----------v-----+  +-----------------+ |
+  |             |    Protocol    |                      |
+  +-------------+     Stack      +----------------------+
+                |    Instance    |
+                +-------+--------+
+                        V
+              Network Layer Interface
+</pre>
+<p class="figure">Figure 1: Concepts and Relationships in the Transport Services Interface Architecture</p>
+<p id="rfc.section.4.p.2">introduce, list phases</p>
 <p></p>
 
 <ol>
@@ -437,50 +450,28 @@ address {
 <li>Termination</li>
 </ol>
 <h1 id="rfc.section.4.1">
-<a href="#rfc.section.4.1">4.1.</a> <a href="#pre-establishment" id="pre-establishment">Pre-Establishment</a>
+<a href="#rfc.section.4.1">4.1.</a> <a href="#objects" id="objects">Objects</a>
 </h1>
-<h1 id="rfc.section.4.1.1">
-<a href="#rfc.section.4.1.1">4.1.1.</a> <a href="#objects" id="objects">Objects</a>
-</h1>
-<h1 id="rfc.section.4.1.2">
-<a href="#rfc.section.4.1.2">4.1.2.</a> <a href="#actions" id="actions">Actions</a>
-</h1>
+<p id="rfc.section.4.1.p.1">draw a picture</p>
 <h1 id="rfc.section.4.2">
-<a href="#rfc.section.4.2">4.2.</a> <a href="#establishment" id="establishment">Establishment</a>
-</h1>
-<h1 id="rfc.section.4.2.1">
-<a href="#rfc.section.4.2.1">4.2.1.</a> <a href="#objects-1" id="objects-1">Objects</a>
-</h1>
-<h1 id="rfc.section.4.2.2">
-<a href="#rfc.section.4.2.2">4.2.2.</a> <a href="#actions-1" id="actions-1">Actions</a>
+<a href="#rfc.section.4.2">4.2.</a> <a href="#pre-establishment" id="pre-establishment">Pre-Establishment</a>
 </h1>
 <h1 id="rfc.section.4.3">
-<a href="#rfc.section.4.3">4.3.</a> <a href="#data-transfer" id="data-transfer">Data Transfer</a>
-</h1>
-<h1 id="rfc.section.4.3.1">
-<a href="#rfc.section.4.3.1">4.3.1.</a> <a href="#objects-2" id="objects-2">Objects</a>
-</h1>
-<h1 id="rfc.section.4.3.2">
-<a href="#rfc.section.4.3.2">4.3.2.</a> <a href="#actions-2" id="actions-2">Actions</a>
+<a href="#rfc.section.4.3">4.3.</a> <a href="#establishment" id="establishment">Establishment</a>
 </h1>
 <h1 id="rfc.section.4.4">
-<a href="#rfc.section.4.4">4.4.</a> <a href="#event-handling" id="event-handling">Event Handling</a>
-</h1>
-<h1 id="rfc.section.4.4.1">
-<a href="#rfc.section.4.4.1">4.4.1.</a> <a href="#objects-3" id="objects-3">Objects</a>
-</h1>
-<h1 id="rfc.section.4.4.2">
-<a href="#rfc.section.4.4.2">4.4.2.</a> <a href="#actions-3" id="actions-3">Actions</a>
+<a href="#rfc.section.4.4">4.4.</a> <a href="#data-transfer" id="data-transfer">Data Transfer</a>
 </h1>
 <h1 id="rfc.section.4.5">
-<a href="#rfc.section.4.5">4.5.</a> <a href="#termination" id="termination">Termination</a>
+<a href="#rfc.section.4.5">4.5.</a> <a href="#event-handling" id="event-handling">Event Handling</a>
 </h1>
-<h1 id="rfc.section.4.5.1">
-<a href="#rfc.section.4.5.1">4.5.1.</a> <a href="#objects-4" id="objects-4">Objects</a>
+<h1 id="rfc.section.4.6">
+<a href="#rfc.section.4.6">4.6.</a> <a href="#termination" id="termination">Termination</a>
 </h1>
-<h1 id="rfc.section.4.5.2">
-<a href="#rfc.section.4.5.2">4.5.2.</a> <a href="#actions-4" id="actions-4">Actions</a>
+<h1 id="rfc.section.4.7">
+<a href="#rfc.section.4.7">4.7.</a> <a href="#internal-terminology" id="internal-terminology">Internal Terminology</a>
 </h1>
+<p id="rfc.section.4.7.p.1">&#8230;things you probably need to implement this, but is not</p>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
 </h1>
