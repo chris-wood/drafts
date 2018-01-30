@@ -5,18 +5,18 @@
 TAPS Working Group                                     A. Brunstrom, Ed.
 Internet-Draft
 Intended status: Informational                             T. Pauly, Ed.
-Expires: August 2, 2018                                       Apple Inc.
+Expires: August 3, 2018                                       Apple Inc.
                                                            K-J. Grinnemo
                                                      Karlstad University
                                                                 T. Jones
                                                   University of Aberdeen
                                                               C. Perkins
                                                    University of Glasgow
-                                                        January 29, 2018
+                                                        January 30, 2018
 
 
              Implementing Interfaces to Transport Services
-                    draft-cambridge-taps-impl-latest
+                    draft-brunstrom-taps-impl-latest
 
 Abstract
 
@@ -37,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 2, 2018.
+   This Internet-Draft will expire on August 3, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Brunstrom, et al.        Expires August 2, 2018                 [Page 1]
+Brunstrom, et al.        Expires August 3, 2018                 [Page 1]
 
 Internet-Draft             TAPS Implementation              January 2018
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Brunstrom, et al.        Expires August 2, 2018                 [Page 2]
+Brunstrom, et al.        Expires August 3, 2018                 [Page 2]
 
 Internet-Draft             TAPS Implementation              January 2018
 
@@ -165,7 +165,7 @@ Authors' Addresses
 
 
 
-Brunstrom, et al.        Expires August 2, 2018                 [Page 3]
+Brunstrom, et al.        Expires August 3, 2018                 [Page 3]
 
 Internet-Draft             TAPS Implementation              January 2018
 
@@ -221,4 +221,4 @@ Internet-Draft             TAPS Implementation              January 2018
 
 
 
-Brunstrom, et al.        Expires August 2, 2018                 [Page 4]
+Brunstrom, et al.        Expires August 3, 2018                 [Page 4]

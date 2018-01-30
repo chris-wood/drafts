@@ -1,0 +1,767 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+
+  <title>An Abstract Application Layer Interface to Transport Services</title>
+
+  
+<style type="text/css">/*<![CDATA[*/
+@viewport {
+  zoom: 1.0;
+  width: extend-to-zoom;
+}
+@-ms-viewport {
+  width: extend-to-zoom;
+  zoom: 1.0;
+}
+
+@media screen and (min-width: 1024px) {
+  body>ul.toc, body>#rfc\.toc {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    right: calc(50vw - 550px);
+    width: 300px;
+    z-index: 1;
+  }
+  #rfc\.toc {
+    top: 55px;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  ul.toc, #rfc\.toc {
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  body>ul.toc {
+    top: 140px;
+  }
+
+  body {
+    padding-right: 350px;
+  }
+}
+
+body {
+  font: 16px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #333;
+  font-size-adjust: 0.5;
+  line-height: 24px;
+  margin: 75px auto;
+  max-width: 724px;
+}
+
+.title, .filename, h1, h2, h3, h4 {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size-adjust: 0.5;
+  font-weight: 500;
+  color: #333;
+  line-height: 100%;
+  margin: 0.8em 0 0.3em;
+}
+.title { font-size: 36px; }
+h1 { font-size: 36px; }
+h2 { font-size: 24px; }
+h3, h4 { font-size: 18px; }
+h1 a[href], h2 a[href], h3 a[href], h4 a[href] {
+  color: #333;
+}
+
+ul.toc li {
+  list-style: none;
+  text-indent: -2.5em;
+  padding-left: 2.5em;
+  padding-bottom: 5px;
+  margin: 0;
+}
+ul.toc ul {
+  margin: 0;
+}
+/* xml2rfc nests ul directly inside ul which messes with the style badly */
+ul.toc, ul.toc>ul, ul.toc ul>ul {
+  margin: 0 0 0 1.5em;
+}
+
+table {
+  margin-left: 0em;
+  border-collapse: collapse;
+}
+th {
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+td {
+  border-top: 1px solid #ddd;
+  vertical-align: top;
+}
+tr:nth-child(2n+1) > td,
+tr:nth-child(2n+1) > th {
+  background-color: #f9f9f9;
+}
+td.reference {
+  max-width: 200px;
+  border-top: none;
+  padding-right: 1em;
+}
+.right {
+  text-align: right;
+}
+
+
+table.header {
+  width: 100%;
+}
+table.header td {
+  border: none;
+  background-color: transparent;
+  color: black;
+}
+.filename {
+  color: rgb(119, 119, 119);
+  font-size: 23px;
+  font-weight: normal;
+  height: auto;
+  line-height: 100%;
+}
+#rfc\.abstract+p, #rfc\.abstract p {
+  font-size: 18px;
+  line-height: 27px%;
+}
+
+samp, tt, code, pre {
+  font: 11pt consolas, monospace;
+  font-size-adjust: none;
+}
+pre {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  overflow-x: auto;
+  padding: 5px;
+  margin: 5px;
+}
+.figure {
+  font-style: italic;
+  margin: 0 1.5em;
+}
+
+address {
+  margin: 10px 0 0;
+}
+.vcard {
+  font-style: normal;
+}
+.vcardline {
+  display: block;
+}
+.vcardline .fn {
+  font-weight: bold;
+}
+.vcardline .hidden {
+  display: none;
+}
+
+dl {
+  margin-left: 1em;
+}
+dl.dl-horizontal: {
+  margin-left: 0;
+}
+dl > dt {
+  float: left;
+  margin-right: 1em;
+}
+dl.nohang > dt {
+  float: none;
+}
+dl > dd {
+  margin-bottom: .5em;
+}
+dl.compact > dd {
+  margin-bottom: 0em;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+  margin-bottom: 0em;
+}
+ul.empty {
+  list-style-type: none;
+}
+ul.empty li {
+  margin-top: .5em;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+}
+hr.noprint {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
+a[href] {
+  color: #2a6496;
+}
+a[href]:hover {
+  background-color: #eee;
+}
+
+ol, ul, li, p {
+  padding: 0;
+  margin: 0.5em 0 0.5em 2em;
+}
+li, p {
+  margin-left: 0;
+}
+address {
+  font-style: normal;
+}
+
+.github-fork-ribbon-wrapper {
+  display: none;
+}
+@media screen and (min-width: 800px) {
+  /* "Fork me on GitHub" CSS ribbon based on
+   * https://github.com/simonwhitaker/github-fork-ribbon-css
+   */
+  .github-fork-ribbon {
+    position: absolute;
+    padding: 2px 0;
+    background-color: #a00;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+    font: 700 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    pointer-events: auto;
+
+    top: 38px;
+    right: -45px;
+
+    transform: rotate(45deg);
+  }
+
+  .github-fork-ribbon a[href],
+  .github-fork-ribbon a[href]:hover {
+    color: #fff;
+    background-color: transparent;
+    text-decoration: none;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+    text-align: center;
+
+    width: 190px;
+    line-height: 18px;
+
+    display: inline-block;
+    padding: 2px 0;
+
+    border: 1.5px dotted #fff;
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .github-fork-ribbon-wrapper {
+    display: block;
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    overflow: hidden;
+    top: 0; right: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .github-fork-ribbon-wrapper {
+    position: fixed;
+  }
+/*]]>*/</style>
+
+
+  <link href="#rfc.toc" rel="Contents">
+<link href="#rfc.section.1" rel="Chapter" title="1 Introduction">
+<link href="#rfc.section.2" rel="Chapter" title="2 Terminology and Notation">
+<link href="#rfc.section.3" rel="Chapter" title="3 Design Principles">
+<link href="#rfc.section.4" rel="Chapter" title="4 API Summary">
+<link href="#rfc.section.5" rel="Chapter" title="5 Pre-Establishment Phase">
+<link href="#rfc.section.5.1" rel="Chapter" title="5.1 Resolving Remote Endpoints">
+<link href="#rfc.section.5.2" rel="Chapter" title="5.2 Specifying Transport Parameters">
+<link href="#rfc.section.5.3" rel="Chapter" title="5.3 Specifying Cryptographic Parameters">
+<link href="#rfc.section.6" rel="Chapter" title="6 Establishing Connections">
+<link href="#rfc.section.6.1" rel="Chapter" title="6.1 Active Open: Connect">
+<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Passive Open: Listen">
+<link href="#rfc.section.6.3" rel="Chapter" title="6.3 Peer to Peer Establishment: Rendezvous">
+<link href="#rfc.section.6.4" rel="Chapter" title="6.4 Connection Groups">
+<link href="#rfc.section.7" rel="Chapter" title="7 Sending Data">
+<link href="#rfc.section.7.1" rel="Chapter" title="7.1 Send Parameters">
+<link href="#rfc.section.7.2" rel="Chapter" title="7.2 Sender-side Framing over Stream Protocols">
+<link href="#rfc.section.8" rel="Chapter" title="8 Receiving Data">
+<link href="#rfc.section.8.1" rel="Chapter" title="8.1 Receiver-side Deframing over Stream Protocols">
+<link href="#rfc.section.9" rel="Chapter" title="9 Responding to Events">
+<link href="#rfc.section.10" rel="Chapter" title="10 Error Handling">
+<link href="#rfc.section.11" rel="Chapter" title="11 IANA Considerations">
+<link href="#rfc.section.12" rel="Chapter" title="12 Security Considerations">
+<link href="#rfc.references" rel="Chapter" title="13 References">
+<link href="#rfc.references.1" rel="Chapter" title="13.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="13.2 Informative References">
+<link href="#rfc.authors" rel="Chapter">
+
+
+  <meta name="generator" content="xml2rfc version 2.8.0 - https://tools.ietf.org/tools/xml2rfc" />
+  <link rel="schema.dct" href="http://purl.org/dc/terms/" />
+
+  <meta name="dct.creator" content="Trammell, B., Ed., Welzl, M., Ed., Fairhurst, G., Kuehlewind, M., Perkins, C., Tiesel, P., and C. Wood" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-trammell-taps-interface-latest" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-1-30" />
+  <meta name="dct.abstract" content="This document describes an abstract programming interface to the transport layer, following the Transport Services Architecture. It supports the asynchronous, atomic transmission of messages over transport protocols and network paths dynamically selected at runtime. It is intended to replace the traditional BSD sockets API as the lowest common denominator interface to the transport layer, in an environment where endpoints have multiple interfaces and potential transport protocols to select from." />
+  <meta name="description" content="This document describes an abstract programming interface to the transport layer, following the Transport Services Architecture. It supports the asynchronous, atomic transmission of messages over transport protocols and network paths dynamically selected at runtime. It is intended to replace the traditional BSD sockets API as the lowest common denominator interface to the transport layer, in an environment where endpoints have multiple interfaces and potential transport protocols to select from." />
+
+</head>
+
+<body>
+
+  <table class="header">
+    <tbody>
+    
+    	<tr>
+<td class="left">TAPS Working Group</td>
+<td class="right">B. Trammell, Ed.</td>
+</tr>
+<tr>
+<td class="left">Internet-Draft</td>
+<td class="right">ETH Zurich</td>
+</tr>
+<tr>
+<td class="left">Intended status: Informational</td>
+<td class="right">M. Welzl, Ed.</td>
+</tr>
+<tr>
+<td class="left">Expires: August 3, 2018</td>
+<td class="right">University of Oslo</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">G. Fairhurst</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">University of Aberdeen</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">M. Kuehlewind</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">ETH Zurich</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">C. Perkins</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">University of Glasgow</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">P. Tiesel</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">TU Berlin</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">C. Wood</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">Apple Inc.</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">January 30, 2018</td>
+</tr>
+
+    	
+    </tbody>
+  </table>
+
+  <p class="title">An Abstract Application Layer Interface to Transport Services<br />
+  <span class="filename">draft-trammell-taps-interface-latest</span></p>
+  
+  <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
+<p>This document describes an abstract programming interface to the transport layer, following the Transport Services Architecture. It supports the asynchronous, atomic transmission of messages over transport protocols and network paths dynamically selected at runtime. It is intended to replace the traditional BSD sockets API as the lowest common denominator interface to the transport layer, in an environment where endpoints have multiple interfaces and potential transport protocols to select from.</p>
+<h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
+<p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
+<p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
+<p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
+<p>This Internet-Draft will expire on August 3, 2018.</p>
+<h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
+<p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
+
+  
+  <hr class="noprint" />
+  <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
+  <ul class="toc">
+
+  	<li>1.   <a href="#rfc.section.1">Introduction</a>
+</li>
+<li>2.   <a href="#rfc.section.2">Terminology and Notation</a>
+</li>
+<li>3.   <a href="#rfc.section.3">Design Principles</a>
+</li>
+<li>4.   <a href="#rfc.section.4">API Summary</a>
+</li>
+<li>5.   <a href="#rfc.section.5">Pre-Establishment Phase</a>
+</li>
+<ul><li>5.1.   <a href="#rfc.section.5.1">Resolving Remote Endpoints</a>
+</li>
+<li>5.2.   <a href="#rfc.section.5.2">Specifying Transport Parameters</a>
+</li>
+<li>5.3.   <a href="#rfc.section.5.3">Specifying Cryptographic Parameters</a>
+</li>
+</ul><li>6.   <a href="#rfc.section.6">Establishing Connections</a>
+</li>
+<ul><li>6.1.   <a href="#rfc.section.6.1">Active Open: Connect</a>
+</li>
+<li>6.2.   <a href="#rfc.section.6.2">Passive Open: Listen</a>
+</li>
+<li>6.3.   <a href="#rfc.section.6.3">Peer to Peer Establishment: Rendezvous</a>
+</li>
+<li>6.4.   <a href="#rfc.section.6.4">Connection Groups</a>
+</li>
+</ul><li>7.   <a href="#rfc.section.7">Sending Data</a>
+</li>
+<ul><li>7.1.   <a href="#rfc.section.7.1">Send Parameters</a>
+</li>
+<li>7.2.   <a href="#rfc.section.7.2">Sender-side Framing over Stream Protocols</a>
+</li>
+</ul><li>8.   <a href="#rfc.section.8">Receiving Data</a>
+</li>
+<ul><li>8.1.   <a href="#rfc.section.8.1">Receiver-side Deframing over Stream Protocols</a>
+</li>
+</ul><li>9.   <a href="#rfc.section.9">Responding to Events</a>
+</li>
+<li>10.   <a href="#rfc.section.10">Error Handling</a>
+</li>
+<li>11.   <a href="#rfc.section.11">IANA Considerations</a>
+</li>
+<li>12.   <a href="#rfc.section.12">Security Considerations</a>
+</li>
+<li>13.   <a href="#rfc.references">References</a>
+</li>
+<ul><li>13.1.   <a href="#rfc.references.1">Normative References</a>
+</li>
+<li>13.2.   <a href="#rfc.references.2">Informative References</a>
+</li>
+</ul><li><a href="#rfc.authors">Authors' Addresses</a>
+</li>
+
+
+  </ul>
+
+  <h1 id="rfc.section.1">
+<a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a>
+</h1>
+<p id="rfc.section.1.p.1">The BSD Unix Sockets API&#8217;s SOCK_STREAM abstraction, by bringing network sockets into the UNIX programming model, allowing anyone who knew how to write programs that dealt with sequential-access files to also write network applications, was a revolution in simplicity. It would not be an overstatement to say that this simple API is the reason the Internet won the protocol wars of the 1980s. SOCK_STREAM is tied to the Transmission Control Protocol (TCP), specified in 1981 <a href="#RFC0793" class="xref">[RFC0793]</a>. TCP has scaled remarkably well over the past three and a half decades, but its total ubiquity has hidden an uncomfortable fact: the network is not really a file, and stream abstractions are too simplistic for many modern application programming models.</p>
+<p id="rfc.section.1.p.2">In the meantime, the nature of Internet access, and the variety of Internet transport protocols, is evolving. The challenges that new protocols and access paradigms present to the sockets API and to programming models based on them inspire the design principles of a new approach, which we outline in <a href="#principles" class="xref">Section 3</a>.</p>
+<p id="rfc.section.1.p.3">As a first step to realizing this design, <a href="#TAPS-ARCH" class="xref">[TAPS-ARCH]</a> describes a high-level architecture for transport services. This document builds a modern abstract programming interface atop this architecture, deriving specific path and protocol selection properties and supported transport features from the analysis provided in <a href="#RFC8095" class="xref">[RFC8095]</a> and <a href="#TAPS-MINSET" class="xref">[TAPS-MINSET]</a>.</p>
+<h1 id="rfc.section.2">
+<a href="#rfc.section.2">2.</a> <a href="#terminology-and-notation" id="terminology-and-notation">Terminology and Notation</a>
+</h1>
+<p id="rfc.section.2.p.1">This API is described in terms of Objects, which an application can interact with; Actions the application can perform on these objects; Events, which an object can send to an application asynchronously; and Parameters associated with these Actions and Events.</p>
+<p id="rfc.section.2.p.2">The following notations, which can be combined, are used in this document:</p>
+<p></p>
+
+<ul><li>Object := Action()</li></ul>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>An Action creates an Object.</li></ul></li></ul>
+<p></p>
+
+<ul><li>Object.Action()</li></ul>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>An Action is performed on an Object.</li></ul></li></ul>
+<p></p>
+
+<ul><li>Object -&gt; Event()</li></ul>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>An Object sends an Event.</li></ul></li></ul>
+<p></p>
+
+<ul><li>Action(Parameters) / Event(Parameters)</li></ul>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>An Action takes a set of Parameters; an Event contains a set of Parameters.</li></ul></li></ul>
+<p id="rfc.section.2.p.11">Actions associated with no object are Actions on the abstract interface itself; they are equivalent to actions on a per-application global context.</p>
+<p id="rfc.section.2.p.12">How these abstract concepts map into concrete implementations of this API in a given language on a given platform is largely dependent on the features of the language and the platform. Actions could be implemented as functions or method calls, for instance, and Events could be implemented though via callback passing or other asynchronous calling conventions.</p>
+<h1 id="rfc.section.3">
+<a href="#rfc.section.3">3.</a> <a href="#principles" id="principles">Design Principles</a>
+</h1>
+<p id="rfc.section.3.p.1">We begin with a set of initial design principles for the abstract interface to realize.</p>
+<p></p>
+
+<ul>
+<li>Transport protocol stack independence in line with the Transport Services Architecture <a href="#TAPS-ARCH" class="xref">[TAPS-ARCH]</a>, allowing applications to be written in terms of the semantics best for the application&#8217;s own design, separate from the protocol(s) used on the wire to achieve them. This enables applications written to a single API to make use of transport protocols in terms of the features they provide.</li>
+<li>Explicit support for multistreaming and multipath transport protocols.</li>
+<li>Explicit support for security properties as first-order transport features, and for long-term caching of cryptographic identities and parameters for associations among endpoints.</li>
+<li>Atomic transmission of content, using application-assisted framing and deframing where the underlying transport does not provide these.</li>
+<li>Asynchronous connection establishment, transmission, and reception, allowing most application interactions with the transport layer to be event-driven.</li>
+</ul>
+<h1 id="rfc.section.4">
+<a href="#rfc.section.4">4.</a> <a href="#api-summary" id="api-summary">API Summary</a>
+</h1>
+<p id="rfc.section.4.p.1">summarize API here</p>
+<p id="rfc.section.4.p.2">In the following sections, we describe the details of application interaction with Objects through Actions and Events in each phase of a connection, following the phases described in <a href="#TAPS-ARCH" class="xref">[TAPS-ARCH]</a>.</p>
+<h1 id="rfc.section.5">
+<a href="#rfc.section.5">5.</a> <a href="#pre-establishment-phase" id="pre-establishment-phase">Pre-Establishment Phase</a>
+</h1>
+<p id="rfc.section.5.p.1">Establishment begins with the creation of a Connection&#8230;</p>
+<h1 id="rfc.section.5.1">
+<a href="#rfc.section.5.1">5.1.</a> <a href="#resolving-remote-endpoints" id="resolving-remote-endpoints">Resolving Remote Endpoints</a>
+</h1>
+<p id="rfc.section.5.1.p.1">note here: resolution should be flexible, and should accept URLS and URL-like things. binding to transport or pseudotransport happens via pre-establishment properties.</p>
+<h1 id="rfc.section.5.2">
+<a href="#rfc.section.5.2">5.2.</a> <a href="#specifying-transport-parameters" id="specifying-transport-parameters">Specifying Transport Parameters</a>
+</h1>
+<p id="rfc.section.5.2.p.1">list parameters to bind to a connection before establishing it</p>
+<h1 id="rfc.section.5.3">
+<a href="#rfc.section.5.3">5.3.</a> <a href="#specifying-cryptographic-parameters" id="specifying-cryptographic-parameters">Specifying Cryptographic Parameters</a>
+</h1>
+<p id="rfc.section.5.3.p.1">list cryptographic parameters supported during pre-establishment</p>
+<h1 id="rfc.section.6">
+<a href="#rfc.section.6">6.</a> <a href="#establishing-connections" id="establishing-connections">Establishing Connections</a>
+</h1>
+<h1 id="rfc.section.6.1">
+<a href="#rfc.section.6.1">6.1.</a> <a href="#active-open-connect" id="active-open-connect">Active Open: Connect</a>
+</h1>
+<h1 id="rfc.section.6.2">
+<a href="#rfc.section.6.2">6.2.</a> <a href="#passive-open-listen" id="passive-open-listen">Passive Open: Listen</a>
+</h1>
+<h1 id="rfc.section.6.3">
+<a href="#rfc.section.6.3">6.3.</a> <a href="#peer-to-peer-establishment-rendezvous" id="peer-to-peer-establishment-rendezvous">Peer to Peer Establishment: Rendezvous</a>
+</h1>
+<h1 id="rfc.section.6.4">
+<a href="#rfc.section.6.4">6.4.</a> <a href="#connection-groups" id="connection-groups">Connection Groups</a>
+</h1>
+<h1 id="rfc.section.7">
+<a href="#rfc.section.7">7.</a> <a href="#sending-data" id="sending-data">Sending Data</a>
+</h1>
+<h1 id="rfc.section.7.1">
+<a href="#rfc.section.7.1">7.1.</a> <a href="#send-parameters" id="send-parameters">Send Parameters</a>
+</h1>
+<h1 id="rfc.section.7.2">
+<a href="#rfc.section.7.2">7.2.</a> <a href="#sender-side-framing-over-stream-protocols" id="sender-side-framing-over-stream-protocols">Sender-side Framing over Stream Protocols</a>
+</h1>
+<h1 id="rfc.section.8">
+<a href="#rfc.section.8">8.</a> <a href="#receiving-data" id="receiving-data">Receiving Data</a>
+</h1>
+<h1 id="rfc.section.8.1">
+<a href="#rfc.section.8.1">8.1.</a> <a href="#receiver-side-deframing-over-stream-protocols" id="receiver-side-deframing-over-stream-protocols">Receiver-side Deframing over Stream Protocols</a>
+</h1>
+<h1 id="rfc.section.9">
+<a href="#rfc.section.9">9.</a> <a href="#responding-to-events" id="responding-to-events">Responding to Events</a>
+</h1>
+<h1 id="rfc.section.10">
+<a href="#rfc.section.10">10.</a> <a href="#error-handling" id="error-handling">Error Handling</a>
+</h1>
+<h1 id="rfc.section.11">
+<a href="#rfc.section.11">11.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
+</h1>
+<p id="rfc.section.11.p.1">RFC-EDITOR: Please remove this section before publication.</p>
+<p id="rfc.section.11.p.2">This document has no actions for IANA.</p>
+<h1 id="rfc.section.12">
+<a href="#rfc.section.12">12.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
+</h1>
+<p id="rfc.section.12.p.1">be paranoid</p>
+<h1 id="rfc.references">
+<a href="#rfc.references">13.</a> References</h1>
+<h1 id="rfc.references.1">
+<a href="#rfc.references.1">13.1.</a> Normative References</h1>
+<table><tbody><tr>
+<td class="reference"><b id="TAPS-ARCH">[TAPS-ARCH]</b></td>
+<td class="top">
+<a>Pauly, T.</a>, <a>Trammell, B.</a>, <a>Brunstrom, A.</a>, <a>Fairhurst, G.</a>, <a>Perkins, C.</a>, <a>Tiesel, P.</a> and <a>C. Wood</a>, "<a>An Architecture for Transport Services</a>", n.d..</td>
+</tr></tbody></table>
+<h1 id="rfc.references.2">
+<a href="#rfc.references.2">13.2.</a> Informative References</h1>
+<table><tbody>
+<tr>
+<td class="reference"><b id="RFC0793">[RFC0793]</b></td>
+<td class="top">
+<a>Postel, J.</a>, "<a href="https://tools.ietf.org/html/rfc793">Transmission Control Protocol</a>", STD 7, RFC 793, DOI 10.17487/RFC0793, September 1981.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC8095">[RFC8095]</b></td>
+<td class="top">
+<a>Fairhurst, G.</a>, <a>Trammell, B.</a> and <a>M. Kuehlewind</a>, "<a href="https://tools.ietf.org/html/rfc8095">Services Provided by IETF Transport Protocols and Congestion Control Mechanisms</a>", RFC 8095, DOI 10.17487/RFC8095, March 2017.</td>
+</tr>
+<tr>
+<td class="reference"><b id="TAPS-MINSET">[TAPS-MINSET]</b></td>
+<td class="top">
+<a>Welzl, M.</a> and <a>S. Gjessing</a>, "<a href="https://tools.ietf.org/html/draft-ietf-taps-minset-00">A Minimal Set of Transport Services for TAPS Systems</a>", Internet-Draft draft-ietf-taps-minset-00, October 2017.</td>
+</tr>
+</tbody></table>
+<h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
+<div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Brian Trammell</span> (editor)
+	  <span class="n hidden">
+		<span class="family-name">Trammell</span>
+	  </span>
+	</span>
+	<span class="org vcardline">ETH Zurich</span>
+	<span class="adr">
+	  <span class="vcardline">Gloriastrasse 35</span>
+
+	  <span class="vcardline">
+		<span class="locality">8092 Zurich</span>,  
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">Switzerland</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:ietf@trammell.ch">ietf@trammell.ch</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Michael Welzl</span> (editor)
+	  <span class="n hidden">
+		<span class="family-name">Welzl</span>
+	  </span>
+	</span>
+	<span class="org vcardline">University of Oslo</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Gorry Fairhurst</span> 
+	  <span class="n hidden">
+		<span class="family-name">Fairhurst</span>
+	  </span>
+	</span>
+	<span class="org vcardline">University of Aberdeen</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:gorry@erg.abdn.ac.uk">gorry@erg.abdn.ac.uk</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Mirja Kuehlewind</span> 
+	  <span class="n hidden">
+		<span class="family-name">Kuehlewind</span>
+	  </span>
+	</span>
+	<span class="org vcardline">ETH Zurich</span>
+	<span class="adr">
+	  <span class="vcardline">Gloriastrasse 35</span>
+
+	  <span class="vcardline">
+		<span class="locality">8092 Zurich</span>,  
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">Switzerland</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:mirja.kuehlewind@tik.ee.ethz.ch">mirja.kuehlewind@tik.ee.ethz.ch</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Colin Perkins</span> 
+	  <span class="n hidden">
+		<span class="family-name">Perkins</span>
+	  </span>
+	</span>
+	<span class="org vcardline">University of Glasgow</span>
+	<span class="adr">
+	  <span class="vcardline">School of Computing Science</span>
+
+	  <span class="vcardline">
+		<span class="locality">Glasgow  G12 8QQ</span>,  
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">United Kingdom</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:csp@csperkins.org">csp@csperkins.org</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Philipp S. Tiesel</span> 
+	  <span class="n hidden">
+		<span class="family-name">Tiesel</span>
+	  </span>
+	</span>
+	<span class="org vcardline">TU Berlin</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:philipp@inet.tu-berlin.de">philipp@inet.tu-berlin.de</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Chris Wood</span> 
+	  <span class="n hidden">
+		<span class="family-name">Wood</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Apple Inc.</span>
+	<span class="adr">
+	  <span class="vcardline">1 Infinite Loop</span>
+
+	  <span class="vcardline">
+		<span class="locality">Cupertino, California 95014</span>,  
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">United States of America</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:cawood@apple.com">cawood@apple.com</a></span>
+
+  </address>
+</div>
+
+</body>
+</html>

@@ -19,8 +19,8 @@ Expires: August 3, 2018                                       ETH Zurich
                                                         January 30, 2018
 
 
-                    Transport Services Architecture
-                    draft-cambridge-taps-arch-latest
+                 An Architecture for Transport Services
+                      draft-pauly-taps-arch-latest
 
 Abstract
 
@@ -228,7 +228,7 @@ Internet-Draft              TAPS Architecture               January 2018
 
      +------------------------------------------------------+
      |                    Application                       |
-     +-|----------------+-----^------+----------^-----------+
+     +-+----------------+-----^------+----------^-----------+
        |                |     |      |          |
      pre-             send    |      |       events
      establishment      |  receive   v          |

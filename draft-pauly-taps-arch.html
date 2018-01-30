@@ -5,7 +5,7 @@
 <head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
 
-  <title>Transport Services Architecture</title>
+  <title>An Architecture for Transport Services</title>
 
   
 <style type="text/css">/*<![CDATA[*/
@@ -304,7 +304,7 @@ address {
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Pauly, T., Ed., Trammell, B., Ed., Brunstrom, A., Fairhurst, G., Perkins, C., Tiesel, P., and C. Wood" />
-  <meta name="dct.identifier" content="urn:ietf:id:draft-cambridge-taps-arch-latest" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-pauly-taps-arch-latest" />
   <meta name="dct.issued" scheme="ISO8601" content="2018-1-30" />
   <meta name="dct.abstract" content="This document provides an overview of the the architecture of Transport Services. This architecture serves as a basis for Application Programming Interfaces (APIs) and implementations that provide flexibile transport networking services. It defines the common set of terminology and concepts to be used in more detailed discussion of transport services." />
   <meta name="description" content="This document provides an overview of the the architecture of Transport Services. This architecture serves as a basis for Application Programming Interfaces (APIs) and implementations that provide flexibile transport networking services. It defines the common set of terminology and concepts to be used in more detailed discussion of transport services." />
@@ -381,8 +381,8 @@ address {
     </tbody>
   </table>
 
-  <p class="title">Transport Services Architecture<br />
-  <span class="filename">draft-cambridge-taps-arch-latest</span></p>
+  <p class="title">An Architecture for Transport Services<br />
+  <span class="filename">draft-pauly-taps-arch-latest</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
 <p>This document provides an overview of the the architecture of Transport Services. This architecture serves as a basis for Application Programming Interfaces (APIs) and implementations that provide flexibile transport networking services. It defines the common set of terminology and concepts to be used in more detailed discussion of transport services.</p>
@@ -473,7 +473,7 @@ address {
 <pre>
   +------------------------------------------------------+
   |                    Application                       |
-  +-|----------------+-----^------+----------^-----------+
+  +-+----------------+-----^------+----------^-----------+
     |                |     |      |          |
   pre-             send    |      |       events
   establishment      |  receive   v          |
