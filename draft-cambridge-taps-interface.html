@@ -284,23 +284,31 @@ address {
   <link href="#rfc.toc" rel="Contents">
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction">
 <link href="#rfc.section.2" rel="Chapter" title="2 Design Principles">
-<link href="#rfc.section.3" rel="Chapter" title="3 Pre-Establishment">
-<link href="#rfc.section.4" rel="Chapter" title="4 Establishing Connections">
-<link href="#rfc.section.5" rel="Chapter" title="5 Sending Data">
-<link href="#rfc.section.6" rel="Chapter" title="6 Receiving Data">
-<link href="#rfc.section.7" rel="Chapter" title="7 Responding to Events">
-<link href="#rfc.section.8" rel="Chapter" title="8 Error Handling">
-<link href="#rfc.section.9" rel="Chapter" title="9 IANA Considerations">
-<link href="#rfc.section.10" rel="Chapter" title="10 Security Considerations">
+<link href="#rfc.section.3" rel="Chapter" title="3 API Summary">
+<link href="#rfc.section.4" rel="Chapter" title="4 Pre-Establishment">
+<link href="#rfc.section.4.1" rel="Chapter" title="4.1 Resolving Remote Endpoints">
+<link href="#rfc.section.4.2" rel="Chapter" title="4.2 Transport Parameters">
+<link href="#rfc.section.4.3" rel="Chapter" title="4.3 Cryptographic Parameters">
+<link href="#rfc.section.5" rel="Chapter" title="5 Establishing Connections">
+<link href="#rfc.section.5.1" rel="Chapter" title="5.1 Connect Parameters">
+<link href="#rfc.section.6" rel="Chapter" title="6 Sending Data">
+<link href="#rfc.section.6.1" rel="Chapter" title="6.1 Send Parameters">
+<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Sender-side Framing over Stream Protocols">
+<link href="#rfc.section.7" rel="Chapter" title="7 Receiving Data">
+<link href="#rfc.section.7.1" rel="Chapter" title="7.1 Receiver-side Deframing over Stream Protocols">
+<link href="#rfc.section.8" rel="Chapter" title="8 Responding to Events">
+<link href="#rfc.section.9" rel="Chapter" title="9 Error Handling">
+<link href="#rfc.section.10" rel="Chapter" title="10 IANA Considerations">
+<link href="#rfc.section.11" rel="Chapter" title="11 Security Considerations">
 <link href="#rfc.authors" rel="Chapter">
 
 
   <meta name="generator" content="xml2rfc version 2.8.0 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
-  <meta name="dct.creator" content="Trammell, B., Ed." />
+  <meta name="dct.creator" content="Trammell, B., Ed., Welzl, M., Ed., Fairhurst, G., Kuehlewind, M., Perkins, C., Tiesel, P., and C. Wood" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-cambridge-taps-interface-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-1-29" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-1-30" />
   <meta name="dct.abstract" content="this will be the TAPS Abstract API definition document." />
   <meta name="description" content="this will be the TAPS Abstract API definition document." />
 
@@ -321,11 +329,55 @@ address {
 </tr>
 <tr>
 <td class="left">Intended status: Informational</td>
-<td class="right">January 29, 2018</td>
+<td class="right">M. Welzl, Ed.</td>
 </tr>
 <tr>
-<td class="left">Expires: August 2, 2018</td>
-<td class="right"></td>
+<td class="left">Expires: August 3, 2018</td>
+<td class="right">University of Oslo</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">G. Fairhurst</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">University of Aberdeen</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">M. Kuehlewind</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">ETH Zurich</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">C. Perkins</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">University of Glasgow</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">P. Tiesel</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">TU Berlin</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">C. Wood</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">Apple Inc.</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">January 30, 2018</td>
 </tr>
 
     	
@@ -341,7 +393,7 @@ address {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on August 2, 2018.</p>
+<p>This Internet-Draft will expire on August 3, 2018.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -355,23 +407,39 @@ address {
 </li>
 <li>2.   <a href="#rfc.section.2">Design Principles</a>
 </li>
-<li>3.   <a href="#rfc.section.3">Pre-Establishment</a>
+<li>3.   <a href="#rfc.section.3">API Summary</a>
 </li>
-<li>4.   <a href="#rfc.section.4">Establishing Connections</a>
+<li>4.   <a href="#rfc.section.4">Pre-Establishment</a>
 </li>
-<li>5.   <a href="#rfc.section.5">Sending Data</a>
+<ul><li>4.1.   <a href="#rfc.section.4.1">Resolving Remote Endpoints</a>
 </li>
-<li>6.   <a href="#rfc.section.6">Receiving Data</a>
+<li>4.2.   <a href="#rfc.section.4.2">Transport Parameters</a>
 </li>
-<li>7.   <a href="#rfc.section.7">Responding to Events</a>
+<li>4.3.   <a href="#rfc.section.4.3">Cryptographic Parameters</a>
 </li>
-<li>8.   <a href="#rfc.section.8">Error Handling</a>
+</ul><li>5.   <a href="#rfc.section.5">Establishing Connections</a>
 </li>
-<li>9.   <a href="#rfc.section.9">IANA Considerations</a>
+<ul><li>5.1.   <a href="#rfc.section.5.1">Connect Parameters</a>
 </li>
-<li>10.   <a href="#rfc.section.10">Security Considerations</a>
+</ul><li>6.   <a href="#rfc.section.6">Sending Data</a>
 </li>
-<li><a href="#rfc.authors">Author's Address</a>
+<ul><li>6.1.   <a href="#rfc.section.6.1">Send Parameters</a>
+</li>
+<li>6.2.   <a href="#rfc.section.6.2">Sender-side Framing over Stream Protocols</a>
+</li>
+</ul><li>7.   <a href="#rfc.section.7">Receiving Data</a>
+</li>
+<ul><li>7.1.   <a href="#rfc.section.7.1">Receiver-side Deframing over Stream Protocols</a>
+</li>
+</ul><li>8.   <a href="#rfc.section.8">Responding to Events</a>
+</li>
+<li>9.   <a href="#rfc.section.9">Error Handling</a>
+</li>
+<li>10.   <a href="#rfc.section.10">IANA Considerations</a>
+</li>
+<li>11.   <a href="#rfc.section.11">Security Considerations</a>
+</li>
+<li><a href="#rfc.authors">Authors' Addresses</a>
 </li>
 
 
@@ -386,33 +454,59 @@ address {
 </h1>
 <p id="rfc.section.2.p.1">take some first principles (beyond those in the architecture) from post sockets. asynchronicity and message orientation are key here.</p>
 <h1 id="rfc.section.3">
-<a href="#rfc.section.3">3.</a> <a href="#pre-establishment" id="pre-establishment">Pre-Establishment</a>
+<a href="#rfc.section.3">3.</a> <a href="#api-summary" id="api-summary">API Summary</a>
 </h1>
 <h1 id="rfc.section.4">
-<a href="#rfc.section.4">4.</a> <a href="#establishing-connections" id="establishing-connections">Establishing Connections</a>
+<a href="#rfc.section.4">4.</a> <a href="#pre-establishment" id="pre-establishment">Pre-Establishment</a>
+</h1>
+<h1 id="rfc.section.4.1">
+<a href="#rfc.section.4.1">4.1.</a> <a href="#resolving-remote-endpoints" id="resolving-remote-endpoints">Resolving Remote Endpoints</a>
+</h1>
+<p id="rfc.section.4.1.p.1">note here: resolution should be flexible, and should accept URLS and URL-like things. binding to transport or pseudotransport happens via pre-establishment properties.</p>
+<h1 id="rfc.section.4.2">
+<a href="#rfc.section.4.2">4.2.</a> <a href="#transport-parameters" id="transport-parameters">Transport Parameters</a>
+</h1>
+<p id="rfc.section.4.2.p.1">list parameters to bind to a connection before establishing it</p>
+<h1 id="rfc.section.4.3">
+<a href="#rfc.section.4.3">4.3.</a> <a href="#cryptographic-parameters" id="cryptographic-parameters">Cryptographic Parameters</a>
 </h1>
 <h1 id="rfc.section.5">
-<a href="#rfc.section.5">5.</a> <a href="#sending-data" id="sending-data">Sending Data</a>
+<a href="#rfc.section.5">5.</a> <a href="#establishing-connections" id="establishing-connections">Establishing Connections</a>
+</h1>
+<h1 id="rfc.section.5.1">
+<a href="#rfc.section.5.1">5.1.</a> <a href="#connect-parameters" id="connect-parameters">Connect Parameters</a>
 </h1>
 <h1 id="rfc.section.6">
-<a href="#rfc.section.6">6.</a> <a href="#receiving-data" id="receiving-data">Receiving Data</a>
+<a href="#rfc.section.6">6.</a> <a href="#sending-data" id="sending-data">Sending Data</a>
+</h1>
+<h1 id="rfc.section.6.1">
+<a href="#rfc.section.6.1">6.1.</a> <a href="#send-parameters" id="send-parameters">Send Parameters</a>
+</h1>
+<h1 id="rfc.section.6.2">
+<a href="#rfc.section.6.2">6.2.</a> <a href="#sender-side-framing-over-stream-protocols" id="sender-side-framing-over-stream-protocols">Sender-side Framing over Stream Protocols</a>
 </h1>
 <h1 id="rfc.section.7">
-<a href="#rfc.section.7">7.</a> <a href="#responding-to-events" id="responding-to-events">Responding to Events</a>
+<a href="#rfc.section.7">7.</a> <a href="#receiving-data" id="receiving-data">Receiving Data</a>
+</h1>
+<h1 id="rfc.section.7.1">
+<a href="#rfc.section.7.1">7.1.</a> <a href="#receiver-side-deframing-over-stream-protocols" id="receiver-side-deframing-over-stream-protocols">Receiver-side Deframing over Stream Protocols</a>
 </h1>
 <h1 id="rfc.section.8">
-<a href="#rfc.section.8">8.</a> <a href="#error-handling" id="error-handling">Error Handling</a>
+<a href="#rfc.section.8">8.</a> <a href="#responding-to-events" id="responding-to-events">Responding to Events</a>
 </h1>
 <h1 id="rfc.section.9">
-<a href="#rfc.section.9">9.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
+<a href="#rfc.section.9">9.</a> <a href="#error-handling" id="error-handling">Error Handling</a>
 </h1>
-<p id="rfc.section.9.p.1">RFC-EDITOR: Please remove this section before publication.</p>
-<p id="rfc.section.9.p.2">This document has no actions for IANA.</p>
 <h1 id="rfc.section.10">
-<a href="#rfc.section.10">10.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
+<a href="#rfc.section.10">10.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
 </h1>
-<p id="rfc.section.10.p.1">be paranoid</p>
-<h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
+<p id="rfc.section.10.p.1">RFC-EDITOR: Please remove this section before publication.</p>
+<p id="rfc.section.10.p.2">This document has no actions for IANA.</p>
+<h1 id="rfc.section.11">
+<a href="#rfc.section.11">11.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
+</h1>
+<p id="rfc.section.11.p.1">be paranoid</p>
+<h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
 <div class="avoidbreak">
   <address class="vcard">
 	<span class="vcardline">
@@ -433,6 +527,134 @@ address {
 	  <span class="country-name vcardline">Switzerland</span>
 	</span>
 	<span class="vcardline">EMail: <a href="mailto:ietf@trammell.ch">ietf@trammell.ch</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Michael Welzl</span> (editor)
+	  <span class="n hidden">
+		<span class="family-name">Welzl</span>
+	  </span>
+	</span>
+	<span class="org vcardline">University of Oslo</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Gorry Fairhurst</span> 
+	  <span class="n hidden">
+		<span class="family-name">Fairhurst</span>
+	  </span>
+	</span>
+	<span class="org vcardline">University of Aberdeen</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:gorry@erg.abdn.ac.uk">gorry@erg.abdn.ac.uk</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Mirja Kuehlewind</span> 
+	  <span class="n hidden">
+		<span class="family-name">Kuehlewind</span>
+	  </span>
+	</span>
+	<span class="org vcardline">ETH Zurich</span>
+	<span class="adr">
+	  <span class="vcardline">Gloriastrasse 35</span>
+
+	  <span class="vcardline">
+		<span class="locality">8092 Zurich</span>,  
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">Switzerland</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:mirja.kuehlewind@tik.ee.ethz.ch">mirja.kuehlewind@tik.ee.ethz.ch</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Colin Perkins</span> 
+	  <span class="n hidden">
+		<span class="family-name">Perkins</span>
+	  </span>
+	</span>
+	<span class="org vcardline">University of Glasgow</span>
+	<span class="adr">
+	  <span class="vcardline">School of Computing Science</span>
+
+	  <span class="vcardline">
+		<span class="locality">Glasgow  G12 8QQ</span>,  
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">United Kingdom</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:csp@csperkins.org">csp@csperkins.org</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Philipp S. Tiesel</span> 
+	  <span class="n hidden">
+		<span class="family-name">Tiesel</span>
+	  </span>
+	</span>
+	<span class="org vcardline">TU Berlin</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:philipp@inet.tu-berlin.de">philipp@inet.tu-berlin.de</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Chris Wood</span> 
+	  <span class="n hidden">
+		<span class="family-name">Wood</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Apple Inc.</span>
+	<span class="adr">
+	  <span class="vcardline">1 Infinite Loop</span>
+
+	  <span class="vcardline">
+		<span class="locality">Cupertino, California 95014</span>,  
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">United States of America</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:cawood@apple.com">cawood@apple.com</a></span>
 
   </address>
 </div>

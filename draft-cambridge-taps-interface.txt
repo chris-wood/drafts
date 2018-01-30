@@ -4,8 +4,19 @@
 
 TAPS Working Group                                      B. Trammell, Ed.
 Internet-Draft                                                ETH Zurich
-Intended status: Informational                          January 29, 2018
-Expires: August 2, 2018
+Intended status: Informational                             M. Welzl, Ed.
+Expires: August 3, 2018                               University of Oslo
+                                                            G. Fairhurst
+                                                  University of Aberdeen
+                                                           M. Kuehlewind
+                                                              ETH Zurich
+                                                              C. Perkins
+                                                   University of Glasgow
+                                                               P. Tiesel
+                                                               TU Berlin
+                                                                 C. Wood
+                                                              Apple Inc.
+                                                        January 30, 2018
 
 
      An Abstract Application Layer Interface to Transport Services
@@ -30,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 2, 2018.
+   This Internet-Draft will expire on August 3, 2018.
 
 Copyright Notice
 
@@ -39,6 +50,14 @@ Copyright Notice
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
+
+
+
+Trammell, et al.         Expires August 3, 2018                 [Page 1]
+
+Internet-Draft               TAPS Interface                 January 2018
+
+
    (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
@@ -47,30 +66,27 @@ Copyright Notice
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
-
-
-
-
-
-
-Trammell                 Expires August 2, 2018                 [Page 1]
-
-Internet-Draft               TAPS Interface                 January 2018
-
-
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Design Principles . . . . . . . . . . . . . . . . . . . . . .   2
-   3.  Pre-Establishment . . . . . . . . . . . . . . . . . . . . . .   2
-   4.  Establishing Connections  . . . . . . . . . . . . . . . . . .   2
-   5.  Sending Data  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   6.  Receiving Data  . . . . . . . . . . . . . . . . . . . . . . .   2
-   7.  Responding to Events  . . . . . . . . . . . . . . . . . . . .   2
-   8.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   2
-   9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   2
-   10. Security Considerations . . . . . . . . . . . . . . . . . . .   2
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   3
+   3.  API Summary . . . . . . . . . . . . . . . . . . . . . . . . .   2
+   4.  Pre-Establishment . . . . . . . . . . . . . . . . . . . . . .   2
+     4.1.  Resolving Remote Endpoints  . . . . . . . . . . . . . . .   2
+     4.2.  Transport Parameters  . . . . . . . . . . . . . . . . . .   3
+     4.3.  Cryptographic Parameters  . . . . . . . . . . . . . . . .   3
+   5.  Establishing Connections  . . . . . . . . . . . . . . . . . .   3
+     5.1.  Connect Parameters  . . . . . . . . . . . . . . . . . . .   3
+   6.  Sending Data  . . . . . . . . . . . . . . . . . . . . . . . .   3
+     6.1.  Send Parameters . . . . . . . . . . . . . . . . . . . . .   3
+     6.2.  Sender-side Framing over Stream Protocols . . . . . . . .   3
+   7.  Receiving Data  . . . . . . . . . . . . . . . . . . . . . . .   3
+     7.1.  Receiver-side Deframing over Stream Protocols . . . . . .   3
+   8.  Responding to Events  . . . . . . . . . . . . . . . . . . . .   3
+   9.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   3
+   10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .   3
+   11. Security Considerations . . . . . . . . . . . . . . . . . . .   3
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   3
 
 1.  Introduction
 
@@ -81,40 +97,58 @@ Table of Contents
    take some first principles (beyond those in the architecture) from
    post sockets. asynchronicity and message orientation are key here.
 
-3.  Pre-Establishment
+3.  API Summary
 
-4.  Establishing Connections
+4.  Pre-Establishment
 
-5.  Sending Data
+4.1.  Resolving Remote Endpoints
 
-6.  Receiving Data
+   note here: resolution should be flexible, and should accept URLS and
+   URL-like things. binding to transport or pseudotransport happens via
+   pre-establishment properties.
 
-7.  Responding to Events
 
-8.  Error Handling
 
-9.  IANA Considerations
+Trammell, et al.         Expires August 3, 2018                 [Page 2]
+
+Internet-Draft               TAPS Interface                 January 2018
+
+
+4.2.  Transport Parameters
+
+   list parameters to bind to a connection before establishing it
+
+4.3.  Cryptographic Parameters
+
+5.  Establishing Connections
+
+5.1.  Connect Parameters
+
+6.  Sending Data
+
+6.1.  Send Parameters
+
+6.2.  Sender-side Framing over Stream Protocols
+
+7.  Receiving Data
+
+7.1.  Receiver-side Deframing over Stream Protocols
+
+8.  Responding to Events
+
+9.  Error Handling
+
+10.  IANA Considerations
 
    RFC-EDITOR: Please remove this section before publication.
 
    This document has no actions for IANA.
 
-10.  Security Considerations
+11.  Security Considerations
 
    be paranoid
 
-
-
-
-
-
-
-Trammell                 Expires August 2, 2018                 [Page 2]
-
-Internet-Draft               TAPS Interface                 January 2018
-
-
-Author's Address
+Authors' Addresses
 
    Brian Trammell (editor)
    ETH Zurich
@@ -125,6 +159,54 @@ Author's Address
    Email: ietf@trammell.ch
 
 
+   Michael Welzl (editor)
+   University of Oslo
+
+
+
+
+Trammell, et al.         Expires August 3, 2018                 [Page 3]
+
+Internet-Draft               TAPS Interface                 January 2018
+
+
+   Gorry Fairhurst
+   University of Aberdeen
+
+   Email: gorry@erg.abdn.ac.uk
+
+
+   Mirja Kuehlewind
+   ETH Zurich
+   Gloriastrasse 35
+   8092 Zurich
+   Switzerland
+
+   Email: mirja.kuehlewind@tik.ee.ethz.ch
+
+
+   Colin Perkins
+   University of Glasgow
+   School of Computing Science
+   Glasgow  G12 8QQ
+   United Kingdom
+
+   Email: csp@csperkins.org
+
+
+   Philipp S. Tiesel
+   TU Berlin
+
+   Email: philipp@inet.tu-berlin.de
+
+
+   Chris Wood
+   Apple Inc.
+   1 Infinite Loop
+   Cupertino, California 95014
+   United States of America
+
+   Email: cawood@apple.com
 
 
 
@@ -139,30 +221,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Trammell                 Expires August 2, 2018                 [Page 3]
+Trammell, et al.         Expires August 3, 2018                 [Page 4]

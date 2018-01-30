@@ -5,7 +5,7 @@
 <head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
 
-  <title>An Architecture for Interfaces to Transport Services</title>
+  <title>Transport Services Architecture</title>
 
   
 <style type="text/css">/*<![CDATA[*/
@@ -292,7 +292,9 @@ address {
 <link href="#rfc.section.4.4" rel="Chapter" title="4.4 Data Transfer">
 <link href="#rfc.section.4.5" rel="Chapter" title="4.5 Event Handling">
 <link href="#rfc.section.4.6" rel="Chapter" title="4.6 Termination">
-<link href="#rfc.section.4.7" rel="Chapter" title="4.7 Internal Terminology">
+<link href="#rfc.section.4.7" rel="Chapter" title="4.7 Transport System Terminology">
+<link href="#rfc.section.4.7.1" rel="Chapter" title="4.7.1 Gathering">
+<link href="#rfc.section.4.7.2" rel="Chapter" title="4.7.2 Racing">
 <link href="#rfc.section.5" rel="Chapter" title="5 IANA Considerations">
 <link href="#rfc.section.6" rel="Chapter" title="6 Security Considerations">
 <link href="#rfc.authors" rel="Chapter">
@@ -301,11 +303,11 @@ address {
   <meta name="generator" content="xml2rfc version 2.8.0 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
-  <meta name="dct.creator" content="Trammell, B., Ed." />
+  <meta name="dct.creator" content="Pauly, T., Ed., Trammell, B., Ed., Brunstrom, A., Fairhurst, G., Perkins, C., Tiesel, P., and C. Wood" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-cambridge-taps-arch-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-1-29" />
-  <meta name="dct.abstract" content="this will be the TAPS Interface Architecture document." />
-  <meta name="description" content="this will be the TAPS Interface Architecture document." />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-1-30" />
+  <meta name="dct.abstract" content="This document provides an overview of the the architecture of Transport Services. This architecture serves as a basis for Application Programming Interfaces (APIs) and implementations that provide flexibile transport networking services. It defines the common set of terminology and concepts to be used in more detailed discussion of transport services." />
+  <meta name="description" content="This document provides an overview of the the architecture of Transport Services. This architecture serves as a basis for Application Programming Interfaces (APIs) and implementations that provide flexibile transport networking services. It defines the common set of terminology and concepts to be used in more detailed discussion of transport services." />
 
 </head>
 
@@ -316,35 +318,79 @@ address {
     
     	<tr>
 <td class="left">TAPS Working Group</td>
-<td class="right">B. Trammell, Ed.</td>
+<td class="right">T. Pauly, Ed.</td>
 </tr>
 <tr>
 <td class="left">Internet-Draft</td>
-<td class="right">ETH Zurich</td>
+<td class="right">Apple Inc.</td>
 </tr>
 <tr>
 <td class="left">Intended status: Informational</td>
-<td class="right">January 29, 2018</td>
+<td class="right">B. Trammell, Ed.</td>
 </tr>
 <tr>
-<td class="left">Expires: August 2, 2018</td>
-<td class="right"></td>
+<td class="left">Expires: August 3, 2018</td>
+<td class="right">ETH Zurich</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">A. Brunstrom</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">Karlstad University</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">G. Fairhurst</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">University of Aberdeen</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">C. Perkins</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">University of Glasgow</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">P. Tiesel</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">TU Berlin</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">C. Wood</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">Apple Inc.</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">January 30, 2018</td>
 </tr>
 
     	
     </tbody>
   </table>
 
-  <p class="title">An Architecture for Interfaces to Transport Services<br />
+  <p class="title">Transport Services Architecture<br />
   <span class="filename">draft-cambridge-taps-arch-latest</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-<p>this will be the TAPS Interface Architecture document.</p>
+<p>This document provides an overview of the the architecture of Transport Services. This architecture serves as a basis for Application Programming Interfaces (APIs) and implementations that provide flexibile transport networking services. It defines the common set of terminology and concepts to be used in more detailed discussion of transport services.</p>
 <h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on August 2, 2018.</p>
+<p>This Internet-Draft will expire on August 3, 2018.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -374,13 +420,17 @@ address {
 </li>
 <li>4.6.   <a href="#rfc.section.4.6">Termination</a>
 </li>
-<li>4.7.   <a href="#rfc.section.4.7">Internal Terminology</a>
+<li>4.7.   <a href="#rfc.section.4.7">Transport System Terminology</a>
 </li>
-</ul><li>5.   <a href="#rfc.section.5">IANA Considerations</a>
+<ul><li>4.7.1.   <a href="#rfc.section.4.7.1">Gathering</a>
+</li>
+<li>4.7.2.   <a href="#rfc.section.4.7.2">Racing</a>
+</li>
+</ul></ul><li>5.   <a href="#rfc.section.5">IANA Considerations</a>
 </li>
 <li>6.   <a href="#rfc.section.6">Security Considerations</a>
 </li>
-<li><a href="#rfc.authors">Author's Address</a>
+<li><a href="#rfc.authors">Authors' Addresses</a>
 </li>
 
 
@@ -389,7 +439,10 @@ address {
   <h1 id="rfc.section.1">
 <a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a>
 </h1>
-<p id="rfc.section.1.p.1">why does this document exist&#8230;</p>
+<p id="rfc.section.1.p.1">This document provides an overview of the the architecture of Transport Services. This architecture serves as a basis for Application Programming Interfaces (APIs) and implementations that provide flexibile transport networking services. It defines the common set of terminology and concepts to be used in more detailed discussion of transport services.</p>
+<p id="rfc.section.1.p.2">Many APIs to perform transport networking have been deployed, perhaps the most widely known and imitated being the BSD socket() interface. The names for calls into these interfaces and events returned from these interfaces vary depending on the intended application, even when the functions are analogous. Similarly, terminology for the implementation of transport services vary based on the context of the protocols themselves. This variety can lead to confusion when trying to define the fundamental commonalities between APIs and distill the nuanced differences.</p>
+<p id="rfc.section.1.p.3">The effort of Transport Services is focused on providing a common, flexible, and reusable interface and implementation for transport protocols. This generic and flexible approach to transport interfaces requires a standardized set of concepts and terminology with which to describe functionality.</p>
+<p id="rfc.section.1.p.4">The terminology defined in this document is intended primarily for use in Internet Drafts and specifications. While the concepts and terms may be used in specific implementations, it is expected that there will remain a variety of terms used by running code.</p>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#terminology" id="terminology">Terminology</a>
 </h1>
@@ -397,7 +450,20 @@ address {
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#design-principles" id="design-principles">Design Principles</a>
 </h1>
-<p id="rfc.section.3.p.1">what are the initial design principles</p>
+<p id="rfc.section.3.p.1">This document is developed in parallel with the specification of the Transport Services API and Transport System documents. The following are the guiding principles of what is and is not included in each.</p>
+<p></p>
+
+<ol>
+<li>Every feature described in the Transport Services API document MUST have a functional mapping to at least one protocol, which MUST be described in the Transport System document.</li>
+<li>The capabilities that are common between all transports and secure transports (the minimum set) MUST be expressible in the Transport Services API. This guarantees support for the basic capabilities of TCP and UDP.</li>
+<li>The Transport Services API MAY expose features or policy requirements that only apply to some transport protocols, and thus may limit the permissible transport protocols and transport protocol options on a per-connection basis.</li>
+<li>Since Transport Services does not define its own transport protocols, but rather provides an interface to existing and future protools, an application using the Transport Services API MUST be able to communicate with peers or servers that use alternate implementations.</li>
+<li>In order to preserve flexibility and compatibility with future protocols, features in the Transport Services API SHOULD NOT reference particular transport protocols. Mappings of API features in the Transport System document, on the other, MUST explain the ramifications of each feature on each existing protocol (which will need to be supplemented and updated in the future).</li>
+</ol>
+<p id="rfc.section.3.p.3">Provide flexibility in protocol selection without changing the API</p>
+<p id="rfc.section.3.p.4">&#8220;Write once, configure many times, run anywhere&#8221;</p>
+<p id="rfc.section.3.p.5">[Uniform interface allows adoption and deployment of TAPS</p>
+<p id="rfc.section.3.p.6">[Mandatory to implement entire API, but not every protocol feature]</p>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#interface-architecture-and-terminology" id="interface-architecture-and-terminology">Interface Architecture and Terminology</a>
 </h1>
@@ -439,39 +505,199 @@ address {
               Network Layer Interface
 </pre>
 <p class="figure">Figure 1: Concepts and Relationships in the Transport Services Interface Architecture</p>
-<p id="rfc.section.4.p.2">introduce, list phases</p>
+<p id="rfc.section.4.p.2">The Transport Services API defines the set of objects, parameters, and functions provided to an application when using a transport networking stack. The consumer of this interface is code in an application which can treat networking transports as a generic tool.</p>
+<p id="rfc.section.4.p.3">These concepts are defined to be protocol-independent and as forward-looking as possible. While it is a requirement that the concepts are applicable to the least common denominator for transport (today, TCP streams), they must also allow the use of a variety of protocols that provides various other benefits.</p>
+<p id="rfc.section.4.p.4">There are several high-level phases of functions that any Transport Services API must provide:</p>
 <p></p>
 
-<ol>
-<li>Pre-Establishment</li>
-<li>Establishment</li>
-<li>Data Transfer</li>
-<li>Event Handling</li>
-<li>Termination</li>
-</ol>
+<ol><li>Pre-Establishment</li></ol>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Properties encompasses the parameters that an application can pass to describe its intent, requirements, prohibitions, and preferences for its networking operations. For any system that provides generic Transport Services, this properties should primarily offer knobs that apply across multiple transports. Properties may have a large impact on the rest of the the aspects of the interface: it can modify how establishment occurs, it can influence the expectations around data transfer, it determines the set of events that will be supported.</li></ul></li></ul>
+<p></p>
+
+<ol><li>Establishment</li></ol>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Establishment focuses on the objects that an application interacts with to prepare to transfer data. These objects themselves are defined with specific terminology, along with the terms for the most important actions that can be taken on the objects.</li></ul></li></ul>
+<p></p>
+
+<ol><li>Data Transfer</li></ol>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Data Transfer consists of how an application represents data to be sent and received, the functions required to send and receive that data, and how the application is notified of the status of its data transfer.</li></ul></li></ul>
+<p></p>
+
+<ol><li>Event Handling</li></ol>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Events define the set of properties that an application may be notified of during the lifetime of transport objects. These may also provide opportunities for the application to interact with the underlying transport.</li></ul></li></ul>
+<p></p>
+
+<ol><li>Termination</li></ol>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Termination focuses on the methods by which data transmission is ceased, and state is torn down in the transport.</li></ul></li></ul>
 <h1 id="rfc.section.4.1">
 <a href="#rfc.section.4.1">4.1.</a> <a href="#objects" id="objects">Objects</a>
 </h1>
-<p id="rfc.section.4.1.p.1">draw a picture</p>
+<p id="rfc.section.4.1.p.1">Connection</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>A Connection is the fundamental object used by an application for all interaction with a peer and data transfer. It is generally capable of bi-directional communication. It has state that represents the capability of being able to send or receive content between its local and remote endpoints. This capability may be based merely on the existence of a route between the two endpoints and an application&#8217;s permission to send and receive on its local endpoint; or may represent successful protocol handshakes at one or more layers that are pre-requistes to receiving content.</li></ul></li></ul>
+<p id="rfc.section.4.1.p.3">Listener</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>A Listener is any object that can be used to prepare a Connection with a remote endpoint without initiation by the local application. That is, it can passively accept initiations for Connections made by another endpoint.</li></ul></li></ul>
 <h1 id="rfc.section.4.2">
 <a href="#rfc.section.4.2">4.2.</a> <a href="#pre-establishment" id="pre-establishment">Pre-Establishment</a>
 </h1>
+<p id="rfc.section.4.2.p.1">Endpoint</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>An Endpoint represents one side of a transport connection. It is a concept that represents how an application views itself or a peer that may vary in levels of specificity. Examples include &#8220;IP address + port&#8221;, &#8220;hostname + port&#8221;, and &#8220;DNS service name&#8221;.</li></ul></li></ul>
+<p id="rfc.section.4.2.p.3">Remote Endpoint</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>The Remote Endpoint in a properties represents the application&#8217;s view of a peer that can participate in a transport connection.</li></ul></li></ul>
+<p id="rfc.section.4.2.p.5">Local Endpoint</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>The Local Endpoint in a properties represents the application&#8217;s view of itself that it wants to use for transport connections. This may be optional, or may be generic (a wildcard address, for example).</li></ul></li></ul>
+<p id="rfc.section.4.2.p.7">Path Selection Properties</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Path Selection Properties consists of any option that an application may set to influence the selection of path between itself and the Remote Endpoint. These options can come in the form of requirements, prohibitions, or preferences. Examples of options which may influence path selection include the interface type (such as a Wi-Fi Ethernet connection, or a Cellular LTE connection), characteristics of the path that are locally known like Maximum Transmission Unit (MTU), or expected throughput or latency.</li></ul></li></ul>
+<p id="rfc.section.4.2.p.9">Protocol Properties</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Protocol Properties consists of any option that an application may set to influence the selection of transport protocol, configure the behavior of transport protocols, or influence the behavior of other protocols such as IP and security protocols.</li></ul></li></ul>
+<p></p>
+
+<ul class="empty"><li>Protocol Selection Properties</li></ul>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li><ul class="empty"><li>Generic Protocol Properties refers to the subset of Protocol Properties options that apply across multiple or all transport protocols. These options come in the form of requirements, prohibitions, and preferences. Examples include reliability, service class, multipath support, and fast open support.</li></ul></li></ul></li></ul>
+<p></p>
+
+<ul class="empty"><li>Specific Protocol Properties</li></ul>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li><ul class="empty"><li>Specific Protocol Properties refers to the subset of Protocol Properties options that apply to a single protocol (transport protocol, IP, or security protocol). The presence of such a properties does not necessarily require that a specific protocol must be used, but that if this protocol is employed, a particular set of options should be used. This is critical to allow compatibility with protocol propertiess on peers.</li></ul></li></ul></li></ul>
 <h1 id="rfc.section.4.3">
 <a href="#rfc.section.4.3">4.3.</a> <a href="#establishment" id="establishment">Establishment</a>
 </h1>
+<p id="rfc.section.4.3.p.1">The terminology of Establishment is divided into two sections: Objects that are the focus of an application&#8217;s interaction, and Actions that the application can take on these Objects to establish connectivity.</p>
+<p id="rfc.section.4.3.p.2">Initiate</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Initiate is the primary action that an application can take to create a Connection to a remote endpoint, and prepare any required local or remote state to be able to send and/or receive content. [NOTE: Make clear that this works for simulataneous open for peer to peer]</li></ul></li></ul>
+<p id="rfc.section.4.3.p.4">Listen</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Listen is the action of marking a Listener as willing to accept incoming Connections.</li></ul></li></ul>
 <h1 id="rfc.section.4.4">
 <a href="#rfc.section.4.4">4.4.</a> <a href="#data-transfer" id="data-transfer">Data Transfer</a>
 </h1>
+<p id="rfc.section.4.4.p.1">Content</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Content is a unit of data that can be respresented as bytes that can be transferred between two endpoints over a transport connection. The bytes within a unit of Content are assumed to be ordered within the unit itself. That is, if an application does not care about the order in which a peer receives two distinct spans of bytes, those spans of bytes are considered independent units of Content. Content may or may not be usable if incomplete or corrupted. Boundaries of Content may or may not be understood or transmitted by transport protocols. That is, what one application considers to be two units of Content sent on a stream-based transport may be treated as a single unit of Content by the application on the other side.</li></ul></li></ul>
+<p id="rfc.section.4.4.p.3">Send</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Send is the action to transmit Content over a Connection to a remote endpoint. The interface to sending may include options specific to how this content is to be sent, as well as ways to notify the application of the status of the sending operation.</li></ul></li></ul>
+<p id="rfc.section.4.4.p.5">Receive</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Receive is the indication that the application is ready to asynchronously accept Content over a Connection from a remote endpoint [reference the event that is delivered upon reception]. The interface to receiving may include options specific to the content that is to be delivered to the application, as well as ways to notify the application of errors.</li></ul></li></ul>
 <h1 id="rfc.section.4.5">
 <a href="#rfc.section.4.5">4.5.</a> <a href="#event-handling" id="event-handling">Event Handling</a>
 </h1>
+<p id="rfc.section.4.5.p.1">Connection Ready</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>A Ready event signals to an application that a given Connection is ready to send and/or receive Content. If the Connection relies on handshakes to establish state between peers, then it is assumed that these steps have been taken.</li></ul></li></ul>
+<p id="rfc.section.4.5.p.3">Connection Finished</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>A Failed event signals to an application that a given Connection is unable to be used for sending or receiving Content. This should deliver a useful error to the application.</li></ul></li></ul>
+<p id="rfc.section.4.5.p.5">Connection Received</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>An Accept event signals to an application that a given Listener has passively received a Connection.</li></ul></li></ul>
+<p id="rfc.section.4.5.p.7">Content Received</p>
+<p id="rfc.section.4.5.p.8">Content Sent</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Sent from stack, or acked, or whatever. May be send error.</li></ul></li></ul>
+<p id="rfc.section.4.5.p.10">Path Properties Changed</p>
+<p id="rfc.section.4.5.p.11">[API may expand this list]</p>
 <h1 id="rfc.section.4.6">
 <a href="#rfc.section.4.6">4.6.</a> <a href="#termination" id="termination">Termination</a>
 </h1>
+<p id="rfc.section.4.6.p.1">Close</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Close is the action an application may take on a Connection to indicate that it no longer intends to send data.</li></ul></li></ul>
+<p id="rfc.section.4.6.p.3">Abort</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Abort is the action an application may take on a Connection to indicate that it no longer intends to send data, will not be willing to receive data, and that the protocol should signal this state to the remote endpoint if applicable.</li></ul></li></ul>
 <h1 id="rfc.section.4.7">
-<a href="#rfc.section.4.7">4.7.</a> <a href="#internal-terminology" id="internal-terminology">Internal Terminology</a>
+<a href="#rfc.section.4.7">4.7.</a> <a href="#transport-system-terminology" id="transport-system-terminology">Transport System Terminology</a>
 </h1>
-<p id="rfc.section.4.7.p.1">&#8230;things you probably need to implement this, but is not</p>
+<p id="rfc.section.4.7.p.1">The Transport System defines the set of objects used internally to a system or library to provide the functionality of transport networking, as required by the abstract interface.</p>
+<p id="rfc.section.4.7.p.2">Connection Group</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Multiplexing! A group of connections.</li></ul></li></ul>
+<p id="rfc.section.4.7.p.4">Path</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>A Path represents an available set of properties of a network route on which packets may be sent or received.</li></ul></li></ul>
+<p id="rfc.section.4.7.p.6">Protocol Instance</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>A Protocol Instance is a single instance of one protocol, including any state it has necessary to establish connectivity or send and receive content.</li></ul></li></ul>
+<p id="rfc.section.4.7.p.8">Protocol Stack</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>A Protocol Stack is a set of Protocol Instances (including relevant application, security, transport, or Internet protocols) that are used together to establish connectivity or send and receive content. A single stack may simple (a single transport protocol instance over IP), or complex (multiple application protocol streams going through a single security and transport protocol, over IP; or, a multi-path transport protocol over multiple transport subflows).</li></ul></li></ul>
+<p id="rfc.section.4.7.p.10">Policy</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Decides gathering and racing</li></ul></li></ul>
+<p id="rfc.section.4.7.p.12">Persistent State</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>History and cache (DNS, TLS, routes)</li></ul></li></ul>
+<h1 id="rfc.section.4.7.1">
+<a href="#rfc.section.4.7.1">4.7.1.</a> <a href="#gathering" id="gathering">Gathering</a>
+</h1>
+<p id="rfc.section.4.7.1.p.1">Path Candidate Identification/Gathering</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Path Selection represents the act of choosing one or more paths that are available to use based on the Path Selection Properties provided by the application, and a Transport Services system&#8217;s policies and heuristics.</li></ul></li></ul>
+<p id="rfc.section.4.7.1.p.3">Protocol Candidate Identification/Gathering</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Protocol Selection represents the act of choosing one or more sets of protocol options that are available to use based on the Protocol Properties provided by the application, and a Transport Services system&#8217;s policies and heuristics.</li></ul></li></ul>
+<h1 id="rfc.section.4.7.2">
+<a href="#rfc.section.4.7.2">4.7.2.</a> <a href="#racing" id="racing">Racing</a>
+</h1>
+<p id="rfc.section.4.7.2.p.1">Protocol Option Racing</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Protocol Racing is the act of attempting, or scheduling attempts for, multiple Protocol Stacks that differ based on the composition of protocols or the options used for protocols.</li></ul></li></ul>
+<p id="rfc.section.4.7.2.p.3">Path Racing</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Path Racing is the act of attempting, or scheduling attempts for, multiple Protocol Stacks that differ based on a selection from the available Paths.</li></ul></li></ul>
+<p id="rfc.section.4.7.2.p.5">Endpoint Racing</p>
+<p></p>
+
+<ul class="empty"><li><ul class="empty"><li>Endpoint Racing is the act of attempting, or scheduling attempts for, multiple Protocol Stacks that differ based on the specific representation of the remote and local endpoints, such as IP addresses resolved from a DNS hostname.</li></ul></li></ul>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
 </h1>
@@ -481,8 +707,30 @@ address {
 <a href="#rfc.section.6">6.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
 </h1>
 <p id="rfc.section.6.p.1">be paranoid</p>
-<h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
+<h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
 <div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Tommy Pauly</span> (editor)
+	  <span class="n hidden">
+		<span class="family-name">Pauly</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Apple Inc.</span>
+	<span class="adr">
+	  <span class="vcardline">One Apple Park Way</span>
+
+	  <span class="vcardline">
+		<span class="locality">Cupertino, California 95014</span>,  
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">United States of America</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:tpauly@apple.com">tpauly@apple.com</a></span>
+
+  </address>
+</div><div class="avoidbreak">
   <address class="vcard">
 	<span class="vcardline">
 	  <span class="fn">Brian Trammell</span> (editor)
@@ -502,6 +750,113 @@ address {
 	  <span class="country-name vcardline">Switzerland</span>
 	</span>
 	<span class="vcardline">EMail: <a href="mailto:ietf@trammell.ch">ietf@trammell.ch</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Anna Brunstrom</span> 
+	  <span class="n hidden">
+		<span class="family-name">Brunstrom</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Karlstad University</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:anna.brunstrom@kau.se">anna.brunstrom@kau.se</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Gorry Fairhurst</span> 
+	  <span class="n hidden">
+		<span class="family-name">Fairhurst</span>
+	  </span>
+	</span>
+	<span class="org vcardline">University of Aberdeen</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:gorry@erg.abdn.ac.uk">gorry@erg.abdn.ac.uk</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Colin Perkins</span> 
+	  <span class="n hidden">
+		<span class="family-name">Perkins</span>
+	  </span>
+	</span>
+	<span class="org vcardline">University of Glasgow</span>
+	<span class="adr">
+	  <span class="vcardline">School of Computing Science</span>
+
+	  <span class="vcardline">
+		<span class="locality">Glasgow  G12 8QQ</span>,  
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">United Kingdom</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:csp@csperkins.org">csp@csperkins.org</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Philipp S. Tiesel</span> 
+	  <span class="n hidden">
+		<span class="family-name">Tiesel</span>
+	  </span>
+	</span>
+	<span class="org vcardline">TU Berlin</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:philipp@inet.tu-berlin.de">philipp@inet.tu-berlin.de</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Chris Wood</span> 
+	  <span class="n hidden">
+		<span class="family-name">Wood</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Apple Inc.</span>
+	<span class="adr">
+	  <span class="vcardline">One Apple Park Way</span>
+
+	  <span class="vcardline">
+		<span class="locality">Cupertino, California 95014</span>,  
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">United States of America</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:cawood@apple.com">cawood@apple.com</a></span>
 
   </address>
 </div>
